@@ -33,11 +33,11 @@ class CovanController extends Controller
         $msv = $req->input('msv');
         $mess = $req->input('rptext');
 
-        $recvID = DB::table('students')->where('msv', '=',$msv)->value('user_id');
+        //$recvID = DB::table('students')->where('msv', '=',$msv)->value('user_id');
         
         $noti = new notification;
         $noti->sendID = 3;
-        $noti->recvID = $recvID;
+        $noti->recvID = 2;
         $noti->description = $mess;
         $noti->status = 1;
         $noti->save();
@@ -48,23 +48,34 @@ class CovanController extends Controller
         
         $data = DB::table('notification')->where('recvID','=',$user = Auth::user()->id)->where('status','=','1')->get();
 
-        DB::table('notification')->where('recvID','=',$user = Auth::user()->id)->where('status','=','1')->update(['status'=>0]);
-        return view('loptruongxemrp')->with([
+        //DB::table('notification')->where('recvID','=',$user = Auth::user()->id)->where('status','=','1')->update(['status'=>0]);
+        return view('covanxemrp')->with([
             'indi_data' => $data
         ]);
     }
 
-    public function guirp()
-    {
+    // public function guirp()
+    // {
 
-        $mess = 'Em gửi thầy điểm rèn luyện của các bạn trong lớp em';
-        $noti = new notification;
-        $noti->sendID = 3;
-        $noti->recvID = 2;
-        $noti->description = $mess;
-        $noti->status = 1;
-        $noti->save();
-        return redirect(route('loptruong'));
+    //     $mess = 'Em gửi thầy điểm rèn luyện của các bạn trong lớp em';
+    //     $noti = new notification;
+    //     $noti->sendID = 3;
+    //     $noti->recvID = 2;
+    //     $noti->description = $mess;
+    //     $noti->status = 1;
+    //     $noti->save();
+    //     return redirect(route('loptruong'));
+    // }
+
+    public function xoa(Request $req){
+        // DB::table('notification')->where('recvID','=',Auth::user()->id)->where('status','=','1')->update(['status'=>0]);
+       
+
+        $id = $req->input('noti');
+        DB::table('notification')->where('notiID', $id)->update(['status'=>0]);
+         $data = DB::table('notification')->where('recvID','=',Auth::user()->id)->where('status','=','1')->get();
+        return view('covanxemrp')->with([
+            'indi_data' => $data
+        ]);
     }
-
 }

@@ -14,8 +14,44 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/sinhvien.css')}}">
 </head>
 <body>
+    <!-- header -->
+    <div id="header">
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href="{{route('loptruongtaoyc')}}">tạo yêu cầu</a>
+                <a href="{{route('loptruongxemrp')}}">xem báo cáo</a>
+                <a href="{{route('guirpcovan')}}">gửi report</a>
+            </div>
+        </div>
+        <a href="#" class="glyphicon glyphicon-off" id="logout" data-toggle="modal" data-target="#myModal"></a>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Thông báo</h4>
+            </div>
+            <div class="modal-body">
+                <p>Bạn thực sự muốn đăng xuất?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                <!-- <button type="button" class="btn btn-danger" onclick="location.href='{{url('logout')}}'">
+                Chấp nhận</button> -->
+                <a href="{{route('logout')}}" class="btn btn-danger">Chấp nhận</a>
+            </div>
+        </div> 
+        </div>
+    </div>
+    <!-- end modal -->
+    <!-- end header -->
         <div class="container">
                                         {{-- TẠO BẢNG ĐIỂM --}}
 
@@ -47,9 +83,9 @@
                     
                 </form>
 
-                <div class="form-group col-md-12">
+                <!-- <div class="form-group col-md-12">
                         <a class="btn btn-primary" href="{{ route('logout')}}">Log out</a>
-                </div>
+                </div> -->
         </div>
 </body>
 </html>

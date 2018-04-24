@@ -9,7 +9,13 @@ use Illuminate\Support\Facades\Auth;
 class SinhvienController extends Controller
 {
     public function index_sv(){
-        return view('sinhvien');
+        $user = Auth::user();
+        $data = diemrl::join('students','diemrl.msv','=','students.msv')->select('diemrl.msv','students.name','diemrl.thamgiahoatdong','diemrl.hienmau','diemrl.thiolympic','diemrl.nghiencuukhoahoc')->where('diemrl.msv','=',$user->student->msv)->get();
+
+        return view('sinhvien')->with([
+            'indi_data' => $data
+        ]);
+        //return view('sinhvien');
     }
 
     function tao(Request $request){
@@ -46,7 +52,19 @@ class SinhvienController extends Controller
         
         $data = DB::table('notification')->where('recvID','=',Auth::user()->id)->where('status','=','1')->get();
 
-        DB::table('notification')->where('recvID','=',Auth::user()->id)->where('status','=','1')->update(['status'=>0]);
+        // DB::table('notification')->where('recvID','=',Auth::user()->id)->where('status','=','1')->update(['status'=>0]);
+        return view('svxemrp')->with([
+            'indi_data' => $data
+        ]);
+    }
+
+    public function xoa(Request $req){
+        // DB::table('notification')->where('recvID','=',Auth::user()->id)->where('status','=','1')->update(['status'=>0]);
+       
+
+        $id = $req->input('noti');
+        DB::table('notification')->where('notiID', $id)->update(['status'=>0]);
+         $data = DB::table('notification')->where('recvID','=',Auth::user()->id)->where('status','=','1')->get();
         return view('svxemrp')->with([
             'indi_data' => $data
         ]);

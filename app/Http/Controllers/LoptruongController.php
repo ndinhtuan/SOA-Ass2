@@ -67,10 +67,11 @@ class LoptruongController extends Controller
         return redirect(route('loptruong'));
     }
 
-    public function guirp()
+    public function guirp(Request $req)
     {
 
-        $mess = 'Em gửi thầy điểm rèn luyện của các bạn trong lớp em';
+        $mess = $req->input('rpforcv');
+        
         $noti = new notification;
         $noti->sendID = 2;
         $noti->recvID = 3;
@@ -85,7 +86,17 @@ class LoptruongController extends Controller
         
         $data = DB::table('notification')->where('recvID', '=', $user = Auth::user()->id)->where('status', '=', '1')->get();
 
-        DB::table('notification')->where('recvID', '=', $user = Auth::user()->id)->where('status', '=', '1')->update(['status' => 0]);
+       // DB::table('notification')->where('recvID', '=', $user = Auth::user()->id)->where('status', '=', '1')->update(['status' => 0]);
+        return view('loptruongxemrp')->with([
+            'indi_data' => $data
+        ]);
+    }
+    public function xoa(Request $req){
+        // DB::table('notification')->where('recvID','=',Auth::user()->id)->where('status','=','1')->update(['status'=>0]);
+       
+        $id = $req->input('noti');
+        DB::table('notification')->where('notiID', $id)->update(['status'=>0]);
+         $data = DB::table('notification')->where('recvID','=',Auth::user()->id)->where('status','=','1')->get();
         return view('loptruongxemrp')->with([
             'indi_data' => $data
         ]);
