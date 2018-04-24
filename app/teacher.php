@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class teacher extends Model
 {
     protected $table = 'teacher';
+    public $timestamps = false;
 }

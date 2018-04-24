@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <form action="{{url('login')}}" method="post" class="login" role="form" enctype="multipart/form-data">
+                <form action="{{route('login')}}" method="post" class="login" role="form" enctype="multipart/form-data">
                     {!! csrf_field() !!}
                     <legend>Login</legend>
 

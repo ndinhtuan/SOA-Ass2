@@ -7,4 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class diemrl extends Model
 {
     protected $table = 'diemrl';
+
+    public $timestamps = false;
 }

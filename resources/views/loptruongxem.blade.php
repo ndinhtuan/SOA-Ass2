@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cố vấn học tập</title>
+    <title>Lớp trưởng</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -51,14 +51,22 @@
                             @endforeach
                         </tbody>
                     </table>
-                    
-                    <div class="form-group col-md-6">
-                        <a class="btn btn-primary" href="{{ route('covanxemrp')}}">xem báo cáo</a>
+
+                    <div class="form-group col-md-12">
+                            <a class="btn btn-primary" href="{{ route('loptruongtaoyc')}}">tạo yêu cầu</a>
                     </div>
-                    <div class="form-group col-md-6">
+                    
+                    <div class="form-group col-md-12">
+                        <a class="btn btn-primary" href="{{ route('loptruongxemrp')}}">xem báo cáo</a>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <a class="btn btn-primary" href="{{route('guirpcovan')}}">gửi report</a>
+                    </div>
+                        
+                    <div class="form-group col-md-12">
                         <a class="btn btn-primary" href="{{ route('logout')}}">Log out</a>
-                </div>
-                  
+                    </div>
                 </div>       
         </div>
 
@@ -73,11 +81,11 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Modal Header</h4>
         </div>
-        <form action = "{{route('cvrp')}}" method="post">
+        <form action = "{{route('rp')}}" method="post">
         <div class="modal-body">
         
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="text" name="rptext">
+                <input type="text" class="form-control" name="rptext">
                 <input type="hidden" id="msv" name="msv">
              
         </div>
