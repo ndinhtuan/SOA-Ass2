@@ -20,11 +20,11 @@ class SinhvienController extends Controller
 
     function tao(Request $request){
         $user = Auth::user();
-        $user->student();
+        //$user->student();
        
         if(!DB::table('diemrl')->where('msv','=',$user->student->msv)->exists()){
             $diemrl = new diemrl;
-            $diemrl->msv = $request->msv;
+            $diemrl->msv = $user->student->msv;
             $diemrl->thamgiahoatdong = $request->thamgiahoatdong;
             $diemrl->hienmau = $request->hienmau;
             $diemrl->thiolympic = $request->thiolympic;

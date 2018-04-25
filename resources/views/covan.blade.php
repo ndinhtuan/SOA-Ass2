@@ -22,8 +22,7 @@
         <div class="dropdown">
             <button class="dropbtn">Menu</button>
             <div class="dropdown-content">
-                <a href="{{route('covanxemrp')}}">xem báo cáo</a>
-                <a href="{{route('covan')}}">xem điểm cả lớp</a>
+                <a href="{{route('covanxemrp')}}">Xem báo cáo</a>
             </div>
         </div>
         <a href="#" class="glyphicon glyphicon-off" id="logout" data-toggle="modal" data-target="#myModal"></a>
@@ -107,7 +106,7 @@
         <div class="modal-body">
         
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="text" name="rptext">
+                <input type="text" class="form-control" name="rptext">
                 <input type="hidden" id="msv" name="msv">
              
         </div>

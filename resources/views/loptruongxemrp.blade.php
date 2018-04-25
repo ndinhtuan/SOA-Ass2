@@ -21,9 +21,8 @@
         <div class="dropdown">
             <button class="dropbtn">Menu</button>
             <div class="dropdown-content">
-                <a href="{{route('loptruongtaoyc')}}">tạo yêu cầu</a>
-                <a href="{{route('loptruongxemrp')}}">xem báo cáo</a>
-                <a href="{{route('guirpcovan')}}">gửi report</a>
+                <a href="{{route('loptruongtaoyc')}}">Tạo yêu cầu</a>
+                <a href="{{route('loptruong')}}">Xem điểm cả lớp</a>
             </div>
         </div>
         <a href="#" class="glyphicon glyphicon-off" id="logout" data-toggle="modal" data-target="#myModal"></a>

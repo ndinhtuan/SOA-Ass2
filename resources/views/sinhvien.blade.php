@@ -22,8 +22,8 @@
         <div class="dropdown">
             <button class="dropbtn">Menu</button>
             <div class="dropdown-content">
-                <a href="{{ route('svxemrp')}}">xem báo cáo</a>
-                <a href="{{route('svtaoyc')}}">Tạo báo cáo</a>
+                <a href="{{ route('svxemrp')}}">Xem báo cáo</a>
+                <a href="{{route('svtaoyc')}}">Tạo/Sửa điểm</a>
                 <a href="{{route('svxem')}}">Xem điểm</a>
             </div>
         </div>
@@ -61,7 +61,7 @@
 
                 <h3>Thêm điểm</h3>	
                 <hr/>
-                <h5>điểm cũ của bạn: </h5> 
+                <h5>Điểm cũ của bạn: </h5> 
                     @foreach($indi_data as $key => $data)
                     <span>Tham gia hoạt động đoàn: {{$data->thamgiahoatdong}}</span><br>
                     <span>Hiến máu: {{$data->hienmau}}</span><br>
